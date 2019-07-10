@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace COMMIT
@@ -10,9 +11,26 @@ namespace COMMIT
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello GitHUBBBBBB");
+            string[] nameList = new string[2] { "Valor 1", "Valor 2" };
+
+            foreach (var item in nameList)
+                Console.WriteLine(item);
+
+            string[] dateList = new string[10000];
+            DateTime firstTime = DateTime.Now;
+
+            for (int i = 0; i < dateList.Length; i++)
+            {
+                dateList[i] = DateTime.Now.ToString("hh:mm:ss:fff");
+                Console.WriteLine(dateList[i]);
+            }    
+
+            Console.WriteLine((DateTime.Now - firstTime).ToString());
+
 
             Console.ReadKey();
+                
+            
         }
     }
 }
