@@ -17,7 +17,7 @@ namespace Sistema_de_locação_de_carros
 
             var opçaoMenu = MenuInicial();
 
-            while (opçaoMenu != 3)
+            while (opçaoMenu!3)
             {
                 if (MenuInicial() == 1)
                     LocarCarro();
@@ -25,9 +25,13 @@ namespace Sistema_de_locação_de_carros
                 if (opçaoMenu == 2)
                     DesalocarCarro();
 
-                opçaoMenu = MenuInicial();
             }
 
+                if (MenuInicial() == 1)
+                {
+                Console.Clear();
+                MostarMenuLocação();
+                }
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine("Pressione qualquer tecla para finalizar");
@@ -47,6 +51,7 @@ namespace Sistema_de_locação_de_carros
             Console.WriteLine("=============================================");
             Console.WriteLine();
             Console.WriteLine();
+            Console.WriteLine(" DESENVOLVIDO POR BRUNO VOLZ - PROJETO HBSIS ");
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine("Pressione uma tecla para continuar!");
@@ -82,7 +87,7 @@ namespace Sistema_de_locação_de_carros
             Basedecarros = new string[2, 3]
             {
                 {"Onix","2019","SIM"},
-                {"Gol","2000","NÃO"},
+                {"Gol","2000","NÃO"}
             };
         }
         /// <summary>
@@ -150,14 +155,12 @@ namespace Sistema_de_locação_de_carros
         /// Metodo de locação de carros de acordo com parametros.
         /// </summary>
         /// <param name="nomedocarro">Nome do carro a ser locado</param>
-        public static void LocarCarro(string nomedocarro, bool alocar)
+        public static void LocarCarro(string nomedocarro)
         {
             for (int i = 0; i < Basedecarros.GetLength(0); i++)
             {
                 if (nomedocarro == Basedecarros[i, 0])
-                {
-                    Basedecarros[i, 2] = alocar ? "NÃO" : "SIM";
-                }
+                    Basedecarros[i, 2] = "NÃO";
             }
         }
     }
