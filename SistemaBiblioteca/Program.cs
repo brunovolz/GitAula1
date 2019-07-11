@@ -118,7 +118,7 @@ namespace SistemaBiblioteca
                 Console.ForegroundColor = ConsoleColor.Green; //fonte verde
                 Console.WriteLine($"Você deseja alocar o livro? ({nomedolivro})");
                 Console.WriteLine();
-                Console.WriteLine($"Se sim digite (1) Se não digite (2)");
+                Console.WriteLine("Se sim digite (1) Se não digite (2)");
 
                 if (Console.ReadKey().KeyChar.ToString() == "1")
                 {
