@@ -16,43 +16,11 @@ namespace SistemaBiblioteca
             CarregaBaseDeDados();
             MostrarSejaBemVindo();
 
-            if (MenuInicial() == 1)
+            if (MenuInicial() == 1) 
             {
-                Console.Clear(); //limpa o console
-                MostrarSejaBemVindo();
-                Console.WriteLine("Menu - Alocar livro");
-                Console.WriteLine();
-                Console.WriteLine("Digite o nome do livro a ser alocado:");
-
-                var nomedolivro = Console.ReadLine();
-                if (Pesquisalivro(nomedolivro))
-                {
-                    Console.Clear();
-                    Console.ForegroundColor = ConsoleColor.Green; //fonte verde
-                    Console.WriteLine($"Você deseja alocar o livro? ({nomedolivro})");
-                    Console.WriteLine();
-                    Console.WriteLine($"Se sim digite (1) Se não digite (2)");
-
-                    if (Console.ReadKey().KeyChar.ToString() == "1")
-                    {
-                        Alocarlivro(nomedolivro);
-                        Console.Clear();
-                        Console.WriteLine("  Livro Alocado com Sucesso!!!");
-                    }
-                    else
-                        Console.Clear();
-
-                    Console.ForegroundColor = ConsoleColor.Cyan; //fonte azul claro
-                    Console.WriteLine("_______________________________");
-                    Console.WriteLine("Listagem de livros disponiveis:");
-
-                    for (int i = 0; i < Basedelivros.GetLength(0); i++) //preenche automatico com tab+tab
-                    {
-                        Console.WriteLine($"NOME: {Basedelivros[i,0]} Disponivel:{Basedelivros[i,1]}");
-                    }
-                }
+                MostrarMenuAlocaçao();
             }
-            Console.ReadKey(); 
+            Console.ReadKey();
         }
         /// <summary>
         /// Mostrar seja bem vindo
@@ -128,8 +96,47 @@ namespace SistemaBiblioteca
         {
             for (int i = 0; i < Basedelivros.GetLength(0); i++)
             {
-                if(nomedolivro == Basedelivros[i, 0])
+                if (nomedolivro == Basedelivros[i, 0])
                     Basedelivros[i, 1] = "Não";
+            }
+        }
+        /// <summary>
+        /// Metodo que carrega o conteudo inicial da aplicação do menu 1
+        /// </summary>
+        public static void MostrarMenuAlocaçao()
+        {
+            Console.Clear(); //limpa o console
+            MostrarSejaBemVindo();
+            Console.WriteLine("Menu - Alocar livro");
+            Console.WriteLine();
+            Console.WriteLine("Digite o nome do livro a ser alocado:");
+
+            var nomedolivro = Console.ReadLine();
+            if (Pesquisalivro(nomedolivro))
+            {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Green; //fonte verde
+                Console.WriteLine($"Você deseja alocar o livro? ({nomedolivro})");
+                Console.WriteLine();
+                Console.WriteLine($"Se sim digite (1) Se não digite (2)");
+
+                if (Console.ReadKey().KeyChar.ToString() == "1")
+                {
+                    Alocarlivro(nomedolivro);
+                    Console.Clear();
+                    Console.WriteLine("  Livro Alocado com Sucesso!!!");
+                }
+                else
+                    Console.Clear();
+
+                Console.ForegroundColor = ConsoleColor.Cyan; //fonte azul claro
+                Console.WriteLine("_______________________________");
+                Console.WriteLine("Listagem de livros disponiveis:");
+
+                for (int i = 0; i < Basedelivros.GetLength(0); i++) //preenche automatico com tab+tab
+                {
+                    Console.WriteLine($"NOME: {Basedelivros[i, 0]} Disponivel:{Basedelivros[i, 1]}");
+                }
             }
         }
     }
