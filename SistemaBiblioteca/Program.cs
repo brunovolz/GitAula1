@@ -14,11 +14,25 @@ namespace SistemaBiblioteca
         {
             Console.ForegroundColor = ConsoleColor.Yellow; //fonte amarelo
             CarregaBaseDeDados();
-            MostrarSejaBemVindo();
 
-            if (MenuInicial() == 1) 
+            var opçaoMenu = MenuPrincipal();
+
+            while (opçaoMenu != 3) //while = repetir o processo / ! = diferente /
             {
-                MostrarMenuAlocaçao();
+                if (opçaoMenu == 1)
+                    AlocarLivro();
+
+                if (opçaoMenu == 2)
+                    DesalocarUmLivro();
+
+                opçaoMenu = MenuPrincipal();
+            }
+
+            Console.ReadKey();
+
+            if (MenuPrincipal() == 1)
+            {
+                AlocarLivro();
             }
             Console.ReadKey();
         }
@@ -43,13 +57,18 @@ namespace SistemaBiblioteca
         /// Metodo que mostra o conteudo do menu e as opções de escolha.
         /// </summary>
         /// <returns>Retorna o valor do menu escolhido em um tipo inteiro.</returns>
-        public static int MenuInicial()
+        public static int MenuPrincipal()
         {
-            Console.WriteLine("\r\nMenu - Inicial");
+            Console.Clear();
+
+            MostrarSejaBemVindo();
+
+            Console.WriteLine("Menu - Inicial");
             Console.WriteLine("O que você deseja realizar?");
             Console.WriteLine();
             Console.WriteLine("1 - Alocar um livro.");
-            Console.WriteLine("2 - Sair do sistema.");
+            Console.WriteLine("2 - Devolver um livro.");
+            Console.WriteLine("3 - Sair do sistema.");
             Console.WriteLine();
             Console.WriteLine("Digite a opção desejada:");
 
@@ -89,45 +108,45 @@ namespace SistemaBiblioteca
             return false;
         }
         /// <summary>
-        /// Metodo que aloca o livro de acordo com o paramentro passado.
+        /// Metodo para alterar a informaçao de alocação do livro.
         /// </summary>
-        /// <param name="nomedolivro">Nome do livro a ser alocado.</param>
-        public static void Alocarlivro(string nomedolivro)
+        /// <param name="nomedolivro">Nome do livro</param>
+        /// <param name="alocar">Valor booleano que define se o livro esta disponivel ou nao.</param>
+        public static void Alocarlivro(string nomedolivro, bool alocar)
         {
             for (int i = 0; i < Basedelivros.GetLength(0); i++)
             {
                 if (nomedolivro == Basedelivros[i, 0])
-                    Basedelivros[i, 1] = "Não";
+                {
+                    Basedelivros[i, 1] = alocar ? "Não" : "Sim";
+                }
             }
+            Console.Clear();
+            MostrarSejaBemVindo();
+            Console.WriteLine("  Livro Atualizado com Sucesso!!!");
         }
         /// <summary>
         /// Metodo que carrega o conteudo inicial da aplicação do menu 1
         /// </summary>
-        public static void MostrarMenuAlocaçao()
+        public static void AlocarLivro()
         {
-            Console.Clear(); //limpa o console
-            MostrarSejaBemVindo();
-            Console.WriteLine("Menu - Alocar livro");
-            Console.WriteLine();
-            Console.WriteLine("Digite o nome do livro a ser alocado:");
+            MostrarMenuDeLivros("Alocar um livro");
 
             var nomedolivro = Console.ReadLine();
             if (Pesquisalivro(nomedolivro))
             {
                 Console.Clear();
+                MostrarSejaBemVindo();
                 Console.ForegroundColor = ConsoleColor.Green; //fonte verde
                 Console.WriteLine($"Você deseja alocar o livro? ({nomedolivro})");
                 Console.WriteLine();
                 Console.WriteLine("Se sim digite (1) Se não digite (2)");
 
-                if (Console.ReadKey().KeyChar.ToString() == "1")
-                {
-                    Alocarlivro(nomedolivro);
-                    Console.Clear();
-                    Console.WriteLine("  Livro Alocado com Sucesso!!!");
-                }
-                else
-                    Console.Clear();
+                Alocarlivro(nomedolivro, Console.ReadKey().KeyChar.ToString() == "1");
+
+                MostrarListadeLivros();
+
+                Console.ReadKey();
 
                 Console.ForegroundColor = ConsoleColor.Cyan; //fonte azul claro
                 Console.WriteLine("_______________________________");
@@ -137,7 +156,56 @@ namespace SistemaBiblioteca
                 {
                     Console.WriteLine($"NOME: {Basedelivros[i, 0]} Disponivel:{Basedelivros[i, 1]}");
                 }
+
+
+                Console.ReadKey();
             }
         }
+        /// <summary>
+        /// Metodo que mostra lista de livros atualizado.
+        /// </summary>
+        public static void MostrarListadeLivros()
+        {
+            Console.WriteLine("Listagem de Livros:");
+
+            for (int i = 0; i < Basedelivros.GetLength(0); i++)
+            {
+                Console.WriteLine($"Nome: { Basedelivros[i, 0]} Disponivel: {Basedelivros[i, 1]}");
+            }
+
+        }
+        public static void DesalocarUmLivro()
+        {
+            MostrarMenuDeLivros("Desalocar um livro:");
+
+            MostrarListadeLivros();
+
+            var nomedolivro = Console.ReadLine();
+            if (!Pesquisalivro(nomedolivro))
+            {
+                Console.Clear();
+                MostrarSejaBemVindo();
+                Console.WriteLine($"Você deseja desalocar o livro? ({nomedolivro})");
+                Console.WriteLine();
+                Console.WriteLine("Se sim digite (1) Se não digite (2)");
+
+                Alocarlivro(nomedolivro, Console.ReadKey().KeyChar.ToString() == "0");
+
+                MostrarListadeLivros();
+
+                Console.ReadKey();
+            }
+        }
+        public static void MostrarMenuDeLivros(string operação)
+        {
+            Console.Clear();
+
+            MostrarSejaBemVindo();
+
+            Console.WriteLine($"Menu - {operação}");
+            Console.WriteLine();
+            Console.WriteLine("Digite o nome do livro para realizar a operação:");
+        }
+
     }
 }
