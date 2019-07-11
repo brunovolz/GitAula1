@@ -9,16 +9,29 @@ namespace Sistema_de_locação_de_carros
     class Program
     {
         static string[,] Basedecarros;
+
         static void Main(string[] args)
         {
             CarregaBaseDeDados();
             MostrarSejaBemVindo();
 
-            if (MenuInicial() == 1)
+            var opçaoMenu = MenuInicial();
+
+            while (opçaoMenu!3)
             {
+                if (MenuInicial() == 1)
+                    LocarCarro();
+
+                if (opçaoMenu == 2)
+                    DesalocarCarro();
+
+            }
+
+                if (MenuInicial() == 1)
+                {
                 Console.Clear();
                 MostarMenuLocação();
-            }
+                }
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine("Pressione qualquer tecla para finalizar");
@@ -57,7 +70,10 @@ namespace Sistema_de_locação_de_carros
             Console.WriteLine("Temos dois veiculos disponiveis para locação!");
             Console.WriteLine();
             Console.WriteLine("(1) Para locar um veiculo");
-            Console.WriteLine("(2) Para sair do sistema");
+            Console.WriteLine("(2) Para a devolução de um veiculo");
+            Console.WriteLine("(3) Para sair do sistema");
+            Console.WriteLine();
+            Console.WriteLine("Digite a opção desejada");
 
             int.TryParse(Console.ReadKey().KeyChar.ToString(), out int opcao);
 

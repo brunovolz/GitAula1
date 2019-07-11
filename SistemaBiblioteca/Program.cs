@@ -25,9 +25,12 @@ namespace SistemaBiblioteca
                 if (opçaoMenu == 2)
                     DesalocarUmLivro();
 
+                if (opçaoMenu == 4)
+                    AjudaInfo();
+
                 opçaoMenu = MenuPrincipal();
             }
-
+            Console.Clear();
             Console.ReadKey();
 
             if (MenuPrincipal() == 1)
@@ -69,6 +72,7 @@ namespace SistemaBiblioteca
             Console.WriteLine("1 - Alocar um livro.");
             Console.WriteLine("2 - Devolver um livro.");
             Console.WriteLine("3 - Sair do sistema.");
+            Console.WriteLine("4 - Informações de Ajuda.");
             Console.WriteLine();
             Console.WriteLine("Digite a opção desejada:");
 
@@ -178,8 +182,6 @@ namespace SistemaBiblioteca
         {
             MostrarMenuDeLivros("Desalocar um livro:");
 
-            MostrarListadeLivros();
-
             var nomedolivro = Console.ReadLine();
             if (!Pesquisalivro(nomedolivro))
             {
@@ -201,11 +203,31 @@ namespace SistemaBiblioteca
             Console.Clear();
 
             MostrarSejaBemVindo();
-
+            MostrarListadeLivros();
+            Console.WriteLine();
             Console.WriteLine($"Menu - {operação}");
             Console.WriteLine();
             Console.WriteLine("Digite o nome do livro para realizar a operação:");
         }
+        /// <summary>
+        /// Menu 4 para Ajuda.
+        /// </summary>
+        public static void AjudaInfo()
+        {
+            Console.Clear();
+            Console.WriteLine("NO MENU INICIAL BASTA APENAS DIGITAR O NÚMERO REFERENTE A OPÇÃO DESEJADA");
+            Console.WriteLine();
+            Console.WriteLine("(1) para locar um livro");
+            Console.WriteLine("(2) para desalocar um livro");
+            Console.WriteLine("(3) para sair do sistema");
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("PRESSIONE QUALQUER TECLA PARA VOLTAR AO MENU INICIAL");
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("Para mais informações e duvidas, ligue para nosso SAC: 0800 999 9999)");
 
+            Console.ReadKey();
+        }
     }
 }
