@@ -17,6 +17,9 @@ namespace Atividade_1
             Console.WriteLine("DIGITE SUA IDADE NO CAMPO ABAIXO");
             Console.WriteLine();
 
+            int.TryParse(Console.ReadKey().KeyChar.ToString(),out int idade);
+
+
             Console.ReadKey();
         }
     }

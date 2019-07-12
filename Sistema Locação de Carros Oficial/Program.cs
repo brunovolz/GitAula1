@@ -77,11 +77,11 @@ namespace Sistema_Locação_de_Carros_Oficial
             };
         }
         /// <summary>
-        /// Metodo que retorna se um livro pode ser alocado.
+        /// Metodo que retorna se um carro pode ser locado.
         /// </summary>
-        /// <param name="nomeCarro">Nome do livro a ser pesquisado</param>
-        /// <returns>Retorna verdadeiro em caso o livro estiver livre para alocação.</returns>
-        public static bool? PesquisaCarroParaLocaçao(string nomeCarro)
+        /// <param name="nomeCarro">Nome do carro a ser pesquisado</param>
+        /// <returns>Retorna verdadeiro em caso o carro estiver livre para locação.</returns>
+        public static bool? PesquisaCarroParaLocaçao(ref string nomeCarro)
         {
             for (int i = 0; i < BaseDeCarros.GetLength(0); i++)
             {
@@ -95,26 +95,40 @@ namespace Sistema_Locação_de_Carros_Oficial
                 }
             }
 
-            return false;
+            Console.WriteLine("Nenhum carro encontrado. Deseha realizar a busca novamente?");
+            Console.WriteLine("Digite o numero da opcão desejada: (1) não (0)");
+
+            int.TryParse(Console.ReadKey().KeyChar.ToString(), out int opcao);
+
+            if (opcao == 1)
+            {
+                Console.WriteLine("Digite o nome do carro a ser pesquisado:");
+                nomeCarro = Console.ReadLine();
+
+                return PesquisaCarroParaLocaçao(ref nomeCarro);
+            }
+
+            return null;
         }
         /// <summary> 
-        /// Metodo para alterar a informação de alocação do livro.
+        /// Metodo para alterar a informação de locação do carro.
         /// </summary>
-        /// <param name="NomeCarro">Nome do livro</param>
-        /// <param name="locar">Valor booleano que define se o livro esta ou não disponivel.</param>
-        public static void LocarCarro(string NomeCarro, bool locar)
+        /// <param name="NomeCarro">Nome do Carro</param>
+        /// <param name="locar">Valor booleano que define se o carro esta ou não disponivel.</param>
+        public static void LocarCarro(string NomeCarro,bool locar)
         {
             for (int i = 0; i < BaseDeCarros.GetLength(0); i++)
             {
                 if (CompararNomes(NomeCarro, BaseDeCarros[i, 0]))
                 {
-                    BaseDeCarros[i, 1] = locar ? "NÃO" : "SIM";
+                    BaseDeCarros[i, 2] = locar ? "NÃO" : "SIM";
                 }
             }
 
             Console.Clear();
             MostrarSejaBemVindo();
             Console.WriteLine("Carro atualizado com sucesso!");
+
         }
         /// <summary>
         /// Metodo que carrega o conteudo inicial da aplicação do menu 1
@@ -122,17 +136,18 @@ namespace Sistema_Locação_de_Carros_Oficial
         public static void AlocarUmCarro()
         {
             MostrarMenuInicialCarros("Alocar um carro:");
+            MostarListaDeCarros();
 
-            var NomeDoCarro = Console.ReadLine();
-            var ResultadoPesquisa = PesquisaCarroParaLocaçao(nomeCarro);
+            var nomeCarro = Console.ReadLine();
+            var ResultadoPesquisa = PesquisaCarroParaLocaçao(ref nomeCarro);
 
             if (ResultadoPesquisa != null && ResultadoPesquisa == true)
             {
                 Console.Clear();
                 MostrarSejaBemVindo();
-                Console.WriteLine("Você deseja alocar o carro? para sim(1) para não(0)");
+                Console.WriteLine("Você deseja locar o carro? para sim(1) para não(0)");
 
-                LocarCarro(NomeDoCarro, Console.ReadKey().KeyChar.ToString() == "1");
+                LocarCarro(nomeCarro, Console.ReadKey().KeyChar.ToString() == "1");
 
                 MostarListaDeCarros();
 
@@ -145,7 +160,7 @@ namespace Sistema_Locação_de_Carros_Oficial
             }
         }
         /// <summary>
-        /// Metodo que mostra a lista de livros atualizado
+        /// Metodo que mostra a lista de carros atualizada.
         /// </summary>
         public static void MostarListaDeCarros()
         {
@@ -163,9 +178,9 @@ namespace Sistema_Locação_de_Carros_Oficial
             MostarListaDeCarros();
 
             var nomeCarro = Console.ReadLine();
-            var resultadoPesquisa = PesquisaCarroParaLocaçao(nomeCarro);
+            var ResultadoPesquisa = PesquisaCarroParaLocaçao(ref nomeCarro);
 
-            if (resultadoPesquisa != null && resultadoPesquisa == false)
+            if (ResultadoPesquisa != null && ResultadoPesquisa == false)
             {
                 Console.Clear();
                 MostrarSejaBemVindo();
@@ -178,7 +193,7 @@ namespace Sistema_Locação_de_Carros_Oficial
                 Console.ReadKey();
             }
 
-            if (resultadoPesquisa == null)
+            if (ResultadoPesquisa == null)
             {
                 Console.WriteLine("Nenhum carro encontrado em nosso banco de dados.");
             }
@@ -205,6 +220,8 @@ namespace Sistema_Locação_de_Carros_Oficial
             if (informaçaoParaComparar.ToLower().Replace(" ", "")
                 == informaçaoAserComparada.ToLower().Replace(" ", ""))
                 return true;
+
+            return false;
         }
     }
 }
