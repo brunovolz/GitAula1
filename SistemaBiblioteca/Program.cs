@@ -213,21 +213,13 @@ namespace SistemaBiblioteca
         /// Menu 4 para Ajuda.
         /// </summary>
         public static void AjudaInfo()
+        public static bool CompararNomes(string primeiro, string segundo)
         {
-            Console.Clear();
-            Console.WriteLine("NO MENU INICIAL BASTA APENAS DIGITAR O NÚMERO REFERENTE A OPÇÃO DESEJADA");
-            Console.WriteLine();
-            Console.WriteLine("(1) para locar um livro");
-            Console.WriteLine("(2) para desalocar um livro");
-            Console.WriteLine("(3) para sair do sistema");
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine("PRESSIONE QUALQUER TECLA PARA VOLTAR AO MENU INICIAL");
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine("Para mais informações e duvidas, ligue para nosso SAC: 0800 999 9999)");
+            if(primeiro.ToLower().Replace(" ", "")
+                == segundo.ToLower().Replace(" ", ""))_
+                return true;
 
-            Console.ReadKey();
+            return false
         }
     }
 }

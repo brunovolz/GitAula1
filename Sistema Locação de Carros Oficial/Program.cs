@@ -81,11 +81,11 @@ namespace Sistema_Locação_de_Carros_Oficial
         /// </summary>
         /// <param name="nomeCarro">Nome do livro a ser pesquisado</param>
         /// <returns>Retorna verdadeiro em caso o livro estiver livre para alocação.</returns>
-        public static bool PesquisaCarroParaLocaçao(string nomeCarro)
+        public static bool? PesquisaCarroParaLocaçao(string nomeCarro)
         {
             for (int i = 0; i < BaseDeCarros.GetLength(0); i++)
             {
-                if (nomeCarro == BaseDeCarros[i, 0])
+                if (CompararNomes(nomeCarro, BaseDeCarros[i, 0]))
                 {
                     Console.WriteLine($"O CARRO: {nomeCarro}" +
                     $" ANO: {BaseDeCarros[i, 1]}" +
@@ -106,7 +106,7 @@ namespace Sistema_Locação_de_Carros_Oficial
         {
             for (int i = 0; i < BaseDeCarros.GetLength(0); i++)
             {
-                if (NomeCarro == BaseDeCarros[i, 0])
+                if (CompararNomes(NomeCarro, BaseDeCarros[i, 0]))
                 {
                     BaseDeCarros[i, 1] = locar ? "NÃO" : "SIM";
                 }
@@ -124,7 +124,9 @@ namespace Sistema_Locação_de_Carros_Oficial
             MostrarMenuInicialCarros("Alocar um carro:");
 
             var NomeDoCarro = Console.ReadLine();
-            if (PesquisaCarroParaLocaçao(NomeDoCarro))
+            var ResultadoPesquisa = PesquisaCarroParaLocaçao(nomeCarro);
+
+            if (ResultadoPesquisa != null && ResultadoPesquisa == true)
             {
                 Console.Clear();
                 MostrarSejaBemVindo();
@@ -135,6 +137,11 @@ namespace Sistema_Locação_de_Carros_Oficial
                 MostarListaDeCarros();
 
                 Console.ReadKey();
+            }
+
+            if(ResultadoPesquisa == null)
+            {
+                Console.WriteLine("Nenhum carro encontrado em nossa base de dados");
             }
         }
         /// <summary>
@@ -155,18 +162,25 @@ namespace Sistema_Locação_de_Carros_Oficial
 
             MostarListaDeCarros();
 
-            var NomeDoCarro = Console.ReadLine();
-            if (!PesquisaCarroParaLocaçao(NomeDoCarro))
+            var nomeCarro = Console.ReadLine();
+            var resultadoPesquisa = PesquisaCarroParaLocaçao(nomeCarro);
+
+            if (resultadoPesquisa != null && resultadoPesquisa == false)
             {
                 Console.Clear();
                 MostrarSejaBemVindo();
                 Console.WriteLine("Você deseja desalocar o carro? para sim(1) para não(0)");
 
-                LocarCarro(NomeDoCarro, Console.ReadKey().KeyChar.ToString() == "0");
+                LocarCarro(nomeCarro, Console.ReadKey().KeyChar.ToString() == "0");
 
                 MostarListaDeCarros();
 
                 Console.ReadKey();
+            }
+
+            if (resultadoPesquisa == null)
+            {
+                Console.WriteLine("Nenhum carro encontrado em nosso banco de dados.");
             }
         }
         public static void MostrarMenuInicialCarros(string operacao)
@@ -182,6 +196,15 @@ namespace Sistema_Locação_de_Carros_Oficial
         public static void ReservarUmCarro()
         {
             Console.WriteLine("Escolha um carro da lista para prosseguir");
+
+            MostarListaDeCarros();
+        }
+
+        public static bool CompararNomes(string informaçaoParaComparar, string informaçaoAserComparada)
+        {
+            if (informaçaoParaComparar.ToLower().Replace(" ", "")
+                == informaçaoAserComparada.ToLower().Replace(" ", ""))
+                return true;
         }
     }
 }
