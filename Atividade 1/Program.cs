@@ -16,23 +16,25 @@ namespace Atividade_1
         }
         public static void MostrarMenu()
         {
-            Console.WriteLine("BORA COMPRAR UMA CERVA COM DESCONTO?");
+            Console.WriteLine("BORA COMPRAR UMA CERVA COM DESCONTO?");//.WriteLine escreve informaçoes e quebra a linha.
             Console.WriteLine();
             Console.WriteLine("MAS PRIMEIRO PRECISAMOS VERIFICAR SUA IDADE!");
             Console.WriteLine();
             Console.WriteLine("DIGITE SUA IDADE NO CAMPO ABAIXO");
             Console.WriteLine();
 
-            int.TryParse(Console.ReadLine(), out int idade);
-
+            int.TryParse(Console.ReadLine(), out int idade);//.ReadLine le uma linha inteira com mais de 1 informação
+            //.TryParse espera uma string e depois da virgula para separar os parametros temos a saida do valor inserido.
+            //Colocando "out int" temos a criação da variavel
+            //Colocando apenas "out" precisamos informar uma variavel existente.
             {
                 if (idade >= 18)
                 {
-                    Console.WriteLine("PARABÉNS, VOCÊ ESTÁ APTO A ADQUIRIR NOSSOS PRODUTOS");
+                    Console.WriteLine("BORA CHAPA O COCO ARROMBADO!");
                 }
                 else
                 {
-                Console.WriteLine("PROIBIDO PARA MENORES DE 18 ANOS");
+                Console.WriteLine("SE FUDEU, PROIBIDO PARA MENORES DE 18 ANOS!");
                 }
 
             }
