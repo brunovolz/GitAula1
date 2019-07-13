@@ -30,11 +30,11 @@ namespace Atividade_1
             {
                 if (idade >= 18)
                 {
-                    Console.WriteLine("BORA CHAPA O COCO ARROMBADO!");
+                    Console.WriteLine("BORA CHAPA O COCO!");
                 }
                 else
                 {
-                Console.WriteLine("SE FUDEU, PROIBIDO PARA MENORES DE 18 ANOS!");
+                Console.WriteLine("VISHHHHH LASCOU-SE VOLTE QUANDO COMPLETAR 18 ANOS!");
                 }
 
             }
