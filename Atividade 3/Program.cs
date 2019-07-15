@@ -14,7 +14,9 @@ namespace Atividade_3
             CarregaListaAlunos();
             Console.WriteLine("============================================");
             Console.WriteLine("LISTA DE ALUNOS DO CURSO DE TEATRO DA ESCOLA");
-            Console.WriteLine("============================================");
+            Console.WriteLine("============================================\n");
+            Console.WriteLine("\nPressione qualquer tecla para ver a lista ");
+            Console.ReadLine();
 
             for (int i = 0; i < ListaDeAlunos.GetLength(0); i++)
             {
@@ -24,6 +26,9 @@ namespace Atividade_3
             Console.ReadKey();
 
         }
+        /// <summary>
+        /// Dados dos alunos.
+        /// </summary>
         public static void CarregaListaAlunos()
         {
             ListaDeAlunos = new string[20, 3]

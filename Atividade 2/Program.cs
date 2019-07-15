@@ -14,11 +14,17 @@ namespace Atividade_2
             ModoPreparo();
             Cobertura();
         }
+        /// <summary>
+        /// Inclui a mensagem para o usuario "pressione para continuar".
+        /// </summary>
         public static void Prosseguir()
         {
             Console.WriteLine("Pressione qualquer tecla para continuar");
             Console.ReadKey();
         }
+        /// <summary>
+        /// Mensagem de bem vindo
+        /// </summary>
         public static void BemVindo()
         {
             Console.WriteLine("=======================================");
@@ -27,6 +33,9 @@ namespace Atividade_2
             Console.WriteLine("=======================================\n");
             Prosseguir();
         }
+        /// <summary>
+        /// Lista de ingredientes para a massa.
+        /// </summary>
         public static void ListaIngredientes()
         {
             BemVindo();
@@ -53,9 +62,12 @@ namespace Atividade_2
             Console.WriteLine("3 colheres (sopa) de chocolate em pó");
             Console.WriteLine("2 colheres (sopa) de manteiga");
             Console.WriteLine("2 colheres (sopa) de leite\n");
-            Console.WriteLine("Se já estiver com todos os ingredientes");
+            Console.WriteLine("Se já estiver com todos os ingredientes\n");
             Prosseguir();
         }
+        /// <summary>
+        /// Modo de preparo do bolo.
+        /// </summary>
         public static void ModoPreparo()
         {
             Console.Clear();
@@ -69,13 +81,16 @@ namespace Atividade_2
             Console.WriteLine("Tire do forno, espere amornar e desenforme\n");
             Prosseguir();
     }
+        /// <summary>
+        /// Modo de preparo para a cobertura.
+        /// </summary>
         public static void Cobertura()
         {
             Console.Clear();
             Console.WriteLine("Enquanto o bolo assa, em uma panela, coloque todos os ingredientes da cobertura e mexa bem até levantar fervura");
             Console.WriteLine("Depois espalhe sobre o bolo ainda quente e quando esfriar vai formar uma casquinha\n");
             Prosseguir();
-            Console.WriteLine("\nAGORA COME O ESSA DELIÇIA");
+            Console.WriteLine("\nAGORA COME ESSA DELIÇIA");
             Console.ReadKey();
         }
 
