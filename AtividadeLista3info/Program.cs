@@ -97,7 +97,7 @@ namespace AtividadeLista3info
             Console.Clear();
             Console.ResetColor();
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("HELLO WORD!");
+            Console.WriteLine("                HELLO WORD!                 ");
             Console.ReadKey();
         }
 
