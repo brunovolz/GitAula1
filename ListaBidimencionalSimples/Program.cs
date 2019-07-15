@@ -16,6 +16,15 @@ namespace ListaBidimencionalSimples
             //Aqui como estamos usando apenas uma referencia da nossa lista colocamos ref
             //ao passar ela no metodo.
             CarregarInformaçoes(ref listaDeNomes);
+
+            Console.WriteLine("Informe ID do registro a ser pesquisado");
+            //Aqui como realizamos a pesquisa somente na chamada
+            //Passamos a nossa lista normalmente pois nao iremos alterar e apenas pesquisar um registro.
+            //Após a virgula temos o console.ReadLine que espera nosso identificador unico
+            PesquisandoInformaçoes(listaDeNomes, Console.ReadLine());
+
+            Console.ReadKey();
+                                 
         }
         /// <summary>
         /// Metodo que carrega as informações dentro da nossa lista criada no metodo "MAIN"
@@ -29,7 +38,7 @@ namespace ListaBidimencionalSimples
             for (int i = 0; i < arrayBi.GetLength(0); i++)
             {
                 //Carregando o que podemos chamar de ID, identificador do nosso registro unico
-                arrayBi[0, 0] = i.ToString();
+                arrayBi[i, 0] = i.ToString();
                 //Aqui apenas idicionamos uma informação extra
                 arrayBi[i, 1] = $"Bruno{i}";
             }
@@ -48,7 +57,7 @@ namespace ListaBidimencionalSimples
         /// </summary>
         /// <param name="arrayBi">Nosa coleção de informações.</param>
         /// <param name="pId">Nosso identifciador unico.</param>
-        public static void PesquisandoInformaçoes(ref string[,] arrayBi, string pId)
+        public static void PesquisandoInformaçoes(string[,] arrayBi, string pId)
         {
             for (int i = 0; i < arrayBi.GetLength(0); i++)
             {//Realizamos nossa comparação dos mesmos tipos
