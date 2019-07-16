@@ -12,7 +12,6 @@ namespace SistemaBiblioteca
 
         static void Main(string[] args)
         {
-            Console.ForegroundColor = ConsoleColor.Yellow; //fonte amarelo
             CarregaBaseDeDados();
 
             var opçaoMenu = MenuPrincipal();
@@ -24,9 +23,9 @@ namespace SistemaBiblioteca
 
                 if (opçaoMenu == 2)
                     DesalocarUmLivro();
-
-                if (opçaoMenu == 4)
-                    AjudaInfo();
+               
+               if (opçaoMenu == 4)
+                   AjudaInfo();
 
                 opçaoMenu = MenuPrincipal();
             }
@@ -45,6 +44,7 @@ namespace SistemaBiblioteca
         public static void MostrarSejaBemVindo()
         {
             #region
+            Console.ForegroundColor = ConsoleColor.Yellow; //fonte amarelo
             Console.WriteLine("-----------------------------------");
             Console.WriteLine("SEJA BEM VINDO A BIBLIOTECA DA NASA");
             Console.WriteLine("-----------------------------------");
@@ -54,6 +54,7 @@ namespace SistemaBiblioteca
             Console.WriteLine("-----------------------------------");
             Console.WriteLine();
             Console.WriteLine();
+            Console.ResetColor();
             #endregion
         }
         /// <summary>
@@ -66,6 +67,7 @@ namespace SistemaBiblioteca
 
             MostrarSejaBemVindo();
 
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Menu - Inicial");
             Console.WriteLine("O que você deseja realizar?");
             Console.WriteLine();
@@ -75,6 +77,7 @@ namespace SistemaBiblioteca
             Console.WriteLine("4 - Informações de Ajuda.");
             Console.WriteLine();
             Console.WriteLine("Digite a opção desejada:");
+            Console.ResetColor();
 
             int.TryParse(Console.ReadKey().KeyChar.ToString(), out int opcao);
 
@@ -103,10 +106,12 @@ namespace SistemaBiblioteca
             {
                 if (nomedolivro == Basedelivros[i, 0])
                 {
+                    Console.ForegroundColor = ConsoleColor.Magenta;
                     Console.WriteLine($"O livro:{nomedolivro}" +
                         $", pode ser alocado? {Basedelivros[i, 1]}");
 
                     return Basedelivros[i, 1] == "SIM";
+                    Console.ResetColor();
                 }
             }
             return false;
@@ -127,7 +132,9 @@ namespace SistemaBiblioteca
             }
             Console.Clear();
             MostrarSejaBemVindo();
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("  Livro Atualizado com Sucesso!!!");
+            Console.ResetColor();
         }
         /// <summary>
         /// Metodo que carrega o conteudo inicial da aplicação do menu 1
@@ -141,10 +148,11 @@ namespace SistemaBiblioteca
             {
                 Console.Clear();
                 MostrarSejaBemVindo();
-                Console.ForegroundColor = ConsoleColor.Green; //fonte verde
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine($"Você deseja alocar o livro? ({nomedolivro})");
                 Console.WriteLine();
                 Console.WriteLine("Se sim digite (1) Se não digite (2)");
+                Console.ResetColor();
 
                 Alocarlivro(nomedolivro, Console.ReadKey().KeyChar.ToString() == "1");
 
@@ -152,7 +160,7 @@ namespace SistemaBiblioteca
 
                 Console.ReadKey();
 
-                Console.ForegroundColor = ConsoleColor.Cyan; //fonte azul claro
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine("_______________________________");
                 Console.WriteLine("Listagem de livros disponiveis:");
 
@@ -160,7 +168,7 @@ namespace SistemaBiblioteca
                 {
                     Console.WriteLine($"NOME: {Basedelivros[i, 0]} Disponivel:{Basedelivros[i, 1]}");
                 }
-
+                Console.ResetColor();
 
                 Console.ReadKey();
             }
@@ -213,13 +221,21 @@ namespace SistemaBiblioteca
         /// Menu 4 para Ajuda.
         /// </summary>
         public static void AjudaInfo()
+        {
+            Console.Clear();
+            Console.WriteLine("Se você tem duvidas sobre o sistema, por favor acesse:");
+            Console.WriteLine("==========================================================================");
+            Console.WriteLine("https://www.hbsis.com/hbtech/projeto/bruno.volz/biblioteca.com.br");
+            Console.WriteLine("==========================================================================");
+            Console.WriteLine("Ou ligue : 0800 999 2929");
+            Console.ReadKey();
+        }
+
         public static bool CompararNomes(string primeiro, string segundo)
         {
-            if(primeiro.ToLower().Replace(" ", "")
-                == segundo.ToLower().Replace(" ", ""))_
-                return true;
-
-            return false
+            if (primeiro.ToLower().Replace(" ", "")
+                == segundo.ToLower().Replace(" ", ""));
+                return false;
         }
     }
 }
