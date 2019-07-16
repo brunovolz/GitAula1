@@ -119,14 +119,16 @@ namespace InsertAndRemovInList
         {
             Console.WriteLine("Área de remoção de registro do sistema.");
             //Laço de repetição para mostrar informações 
+
+            Console.WriteLine("Informe o ID do RemoverRegistro a ser removido:");
+            var id = Console.ReadLine();
+
             for (int i = 0; i < baseDeDados.GetLength(0); i++)
             {   //Indicamos pro usuario informar o ID para remoção
                 Console.WriteLine($"ID:{baseDeDados[i, 0]} " +
                     $"- Nome:{baseDeDados[i, 1]} " +
                     $"- Idade:{baseDeDados[i, 2]}");
 
-                Console.WriteLine("Informe o ID do RemoverRegistro a ser removido:");
-                var id = Console.ReadLine();
             }
             //Outro laço agora para remover o registro caso ele exista
             for (int i = 0; i < baseDeDados.GetLength(0); i++)
