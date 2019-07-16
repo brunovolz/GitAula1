@@ -80,7 +80,7 @@ namespace ProjetoFinalConsole
                 break;
             }
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("\nLivro cadastrado com sucesso!");
+            Console.WriteLine("\nLivro cadastrado com sucesso!\n");
             Console.ResetColor();
             Console.WriteLine("Para voltar ao Menu Inicial, pressione qualquer tecla.");
             Console.ReadKey();
@@ -153,7 +153,7 @@ namespace ProjetoFinalConsole
             {
                 var ListaCopia = baseDeDados;
 
-                baseDeDados = new string[baseDeDados.GetLength(0) + 5, 5];
+                baseDeDados = new string[baseDeDados.GetLength(0) + 2, 5];
 
                 for (int i = 0; i < ListaCopia.GetLength(0); i++)
                 {
