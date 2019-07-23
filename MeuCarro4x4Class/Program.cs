@@ -15,7 +15,7 @@ namespace MeuCarro4x4Class
 
             teste.Rodas = 5;
 
-            teste.janelas = 5;
+            teste.Janelas = 5;
 
             teste.MostrarCarro();
 

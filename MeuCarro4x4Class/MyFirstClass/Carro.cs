@@ -8,18 +8,18 @@ namespace MeuCarro4x4Class.MyFirstClass
 {
     class Carro
     {
-        public int rodas { get; set; } = 0;
-        public int portas { get; set; } = 0;
-        public int bancos { get; set; } = 0;
-        public int janelas { get; set; } = 0; //se não especificar public fica privado
+        public int Rodas { get; set; } = 0;
+        public int Portas { get; set; } = 0;
+        public int Bancos { get; set; } = 0;
+        public int Janelas { get; set; } = 0; //se não especificar public fica privado
         
         public void MostrarCarro()
         {
             Console.WriteLine($"Nosso carro:\r\n" +
-                $"Quant Rodas[{rodas}]\r\n" +
-                $"Quant Portas[{portas}]\r\n" +
-                $"Quant Bancos[{bancos}]\r\n" +
-                $"Quant Janelas[{janelas}]");
+                $"Quant Rodas[{Rodas}]\r\n" +
+                $"Quant Portas[{Portas}]\r\n" +
+                $"Quant Bancos[{Bancos}]\r\n" +
+                $"Quant Janelas[{Janelas}]");
         }
     }
 }
