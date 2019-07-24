@@ -13,7 +13,7 @@ namespace MeuCarro4x4Class
         {
             var teste = new Carro();
 
-            teste.Rodas = 5;
+            teste++;
 
             teste.Janelas = 5;
 
