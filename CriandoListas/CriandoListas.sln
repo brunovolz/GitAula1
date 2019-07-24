@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29020.237
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CriandoListas", "CriandoListas.csproj", "{16298AD5-BDF5-4D35-A3C5-C9455FA19257}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsandoBibliotecaDeLista", "..\UsandoBibliotecaDeLista\UsandoBibliotecaDeLista.csproj", "{D8559EC9-FEBB-4620-B2AD-C4061702E7A1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{16298AD5-BDF5-4D35-A3C5-C9455FA19257}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16298AD5-BDF5-4D35-A3C5-C9455FA19257}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16298AD5-BDF5-4D35-A3C5-C9455FA19257}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8559EC9-FEBB-4620-B2AD-C4061702E7A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8559EC9-FEBB-4620-B2AD-C4061702E7A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8559EC9-FEBB-4620-B2AD-C4061702E7A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8559EC9-FEBB-4620-B2AD-C4061702E7A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

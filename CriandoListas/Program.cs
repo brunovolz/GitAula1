@@ -14,7 +14,10 @@ namespace CriandoListas
             var Lista = new Class1();
 
             Lista.CarregaLista();
+
             Lista.LimpaLista();
+
+            Lista.CarregaLista();
 
             Console.ReadKey();
         }
