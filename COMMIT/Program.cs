@@ -11,26 +11,20 @@ namespace COMMIT
     {
         static void Main(string[] args)
         {
-            string[] nameList = new string[2] { "Valor 1", "Valor 2" };
-
-            foreach (var item in nameList)
-                Console.WriteLine(item);
-
-            string[] dateList = new string[10000];
-            DateTime firstTime = DateTime.Now;
-
-            for (int i = 0; i < dateList.Length; i++)
-            {
-                dateList[i] = DateTime.Now.ToString("hh:mm:ss:fff");
-                Console.WriteLine(dateList[i]);
-            }    
-
-            Console.WriteLine((DateTime.Now - firstTime).ToString());
-
+            Console.WriteLine("Digite 1 número!");
+             int num1 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Digite mais 1 número!");
+             int num2 = Convert.ToInt32(Console.ReadLine());
 
             Console.ReadKey();
-                
-            
+            if (num1 % num2 == 0 || num2 % num1 == 0)
+            {
+                Console.WriteLine("São múltiplos");
+            }
+            else
+                Console.WriteLine("Não são múltiplos");
+
+            Console.ReadKey();
         }
     }
 }
