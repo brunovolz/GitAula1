@@ -19,6 +19,25 @@ namespace Cantina
         {
             Lancheria ComprarLanchinho = new Lancheria();
 
+            /*while (ComprarLanchinho.MostrarSaldo() > 0.00)
+            {
+
+                MostrarMenu();
+
+                var valor = 0.00;
+
+                switch (Console.ReadLine())
+                {
+                    case "1": { valor = 2.50; } break;
+                    case "2": { valor = 3.50; } break;
+                    case "3": { valor = ComprarLanchinho.MostrarSaldo(); } break;
+                }
+
+                if (ComprarLanchinho.ComprarLanche(pLanche:!))
+                    Console.WriteLine("Lanchinho comprado com susssscesso!");
+                else
+                    Console.WriteLine("Você não tem dinheiro para comprar o lanchinho");*/
+
             Console.WriteLine("Informe o lanche a ser comprado\r\n" +
             "Coxinha = 2,00 reais ou Pastel = 3,00 reais");
 
@@ -40,6 +59,11 @@ namespace Cantina
                 EfetuarCompra();
             }
         }
-        
     }
 }
+        /*public static void MostrarMenu()
+        {
+            Console.WriteLine("Informe o lanche a ser comprado:\r\n" +
+            "(1) - Coxinha = 2,00 reais\r\n" +
+            "(2) - Pastel = 3,00 reais\r\n");
+        }*/
